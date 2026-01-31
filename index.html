@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rufino Dev | APKs Android</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Rufino Dev</span>
+            </div>
+            <nav class="nav">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#apps" class="nav-link">Apps</a>
+                <a href="#juegos" class="nav-link">Juegos</a>
+                <a href="#descargas" class="nav-link">Descargas</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+            <button class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Presentación -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1 class="hero-title">Desarrollador Android</h1>
+            <p class="hero-subtitle">Creo aplicaciones útiles y juegos divertidos</p>
+            <p class="hero-text">Todas disponibles en formato APK para descarga directa</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="appsCount">0</span>
+                    <span class="stat-label">Aplicaciones</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="gamesCount">0</span>
+                    <span class="stat-label">Juegos</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="downloadsCount">0</span>
+                    <span class="stat-label">Descargas</span>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#descargas" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Ver APKs
+                </a>
+                <a href="#contacto" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Contactar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apps -->
+    <section id="apps" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-mobile-alt"></i> Mis Aplicaciones
+            </h2>
+            <p class="section-subtitle">APKs disponibles para Android</p>
+            
+            <div class="apps-grid">
+                <!-- App 1 -->
+                <div class="card">
+                    <div class="card-icon app">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="card-title">TaskMaster Pro</h3>
+                    <p class="card-desc">Gestor de tareas con recordatorios inteligentes.</p>
+                    <div class="card-info">
+                        <span><i class="fas fa-download"></i> 1.2 MB</span>
+                        <span><i class="fas fa-calendar"></i> v1.0.0</span>
+                    </div>
+                    <a href="downloads/apps/taskmaster-pro.apk" class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar APK
+                    </a>
+                </div>
+                
+                <!-- App 2 -->
+                <div class="card">
+                    <div class="card-icon app">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="card-title">Health Tracker</h3>
+                    <p class="card-desc">Seguimiento de hábitos y salud.</p>
+                    <div class="card-info">
+                        <span><i class="fas fa-download"></i> 2.4 MB</span>
+                        <span><i class="fas fa-calendar"></i> Beta 0.8</span>
+                    </div>
+                    <a href="downloads/apps/health-tracker.apk" class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar APK
+                    </a>
+                </div>
+                
+                <!-- App 3 -->
+                <div class="card">
+                    <div class="card-icon app">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="card-title">Finance Calc</h3>
+                    <p class="card-desc">Calculadora financiera avanzada.</p>
+                    <div class="card-info">
+                        <span><i class="fas fa-download"></i> 1.8 MB</span>
+                        <span><i class="fas fa-calendar"></i> En desarrollo</span>
+                    </div>
+                    <button class="card-btn disabled">
+                        <i class="fas fa-clock"></i> Próximamente
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Juegos -->
+    <section id="juegos" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-gamepad"></i> Mis Juegos
+            </h2>
+            <p class="section-subtitle">Juegos Android para descargar</p>
+            
+            <div class="games-grid">
+                <!-- Juego 1 -->
+                <div class="card">
+                    <div class="card-icon game">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="card-title">Galaxy Defender</h3>
+                    <p class="card-desc">Shoot'em up espacial 2D.</p>
+                    <div class="card-info">
+                        <span><i class="fas fa-download"></i> 15 MB</span>
+                        <span><i class="fas fa-star"></i> 4.5/5</span>
+                    </div>
+                    <a href="downloads/games/galaxy-defender.apk" class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar APK
+                    </a>
+                </div>
+                
+                <!-- Juego 2 -->
+                <div class="card">
+                    <div class="card-icon game">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3 class="card-title">Pixel Runner</h3>
+                    <p class="card-desc">Endless runner pixel art.</p>
+                    <div class="card-info">
+                        <span><i class="fas fa-download"></i> 8 MB</span>
+                        <span><i class="fas fa-star"></i> 4.2/5</span>
+                    </div>
+                    <a href="downloads/games/pixel-runner.apk" class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar APK
+                    </a>
+                </div>
+                
+                <!-- Juego 3 -->
+                <div class="card">
+                    <div class="card-icon game">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="card-title">Cyber Puzzle</h3>
+                    <p class="card-desc">Rompecabezas cyberpunk.</p>
+                    <div class="card-info">
+                        <span><i class="fas fa-download"></i> En desarrollo</span>
+                        <span><i class="fas fa-code"></i> Godot</span>
+                    </div>
+                    <button class="card-btn disabled">
+                        <i class="fas fa-wrench"></i> En desarrollo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Descargas -->
+    <section id="descargas" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-download"></i> Todas las Descargas
+            </h2>
+            
+            <div class="download-instructions">
+                <h3><i class="fas fa-info-circle"></i> Cómo instalar APKs:</h3>
+                <ol>
+                    <li>Descarga el archivo .apk</li>
+                    <li>Ve a <strong>Ajustes → Seguridad</strong></li>
+                    <li>Activa <strong>"Orígenes desconocidos"</strong></li>
+                    <li>Abre el archivo .apk descargado</li>
+                    <li>Sigue los pasos de instalación</li>
+                </ol>
+            </div>
+            
+            <div class="downloads-list">
+                <!-- Apps para descargar -->
+                <div class="download-category">
+                    <h3><i class="fas fa-mobile-alt"></i> Aplicaciones</h3>
+                    <div class="download-items">
+                        <div class="download-item">
+                            <div class="item-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="item-info">
+                                <h4>TaskMaster Pro</h4>
+                                <p>v1.0.0 | 1.2 MB | APK Android</p>
+                            </div>
+                            <a href="downloads/apps/taskmaster-pro.apk" class="download-btn" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        
+                        <div class="download-item">
+                            <div class="item-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="item-info">
+                                <h4>Health Tracker</h4>
+                                <p>Beta 0.8 | 2.4 MB | APK Android</p>
+                            </div>
+                            <a href="downloads/apps/health-tracker.apk" class="download-btn" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Juegos para descargar -->
+                <div class="download-category">
+                    <h3><i class="fas fa-gamepad"></i> Juegos</h3>
+                    <div class="download-items">
+                        <div class="download-item">
+                            <div class="item-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="item-info">
+                                <h4>Galaxy Defender</h4>
+                                <p>v1.2 | 15 MB | APK Android</p>
+                            </div>
+                            <a href="downloads/games/galaxy-defender.apk" class="download-btn" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        
+                        <div class="download-item">
+                            <div class="item-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div class="item-info">
+                                <h4>Pixel Runner</h4>
+                                <p>v1.0 | 8 MB | APK Android</p>
+                            </div>
+                            <a href="downloads/games/pixel-runner.apk" class="download-btn" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-envelope"></i> Contacto
+            </h2>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Reportar problemas o sugerencias</h3>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>Respuesta rápida</p>
+                            <a href="https://wa.me/TUNUMERO" class="contact-link">Enviar mensaje</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>Para consultas formales</p>
+                            <a href="mailto:tu@email.com" class="contact-link">tu@email.com</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <h3>Envíame un mensaje</h3>
+                    <input type="text" placeholder="Tu nombre" required>
+                    <input type="email" placeholder="Tu email" required>
+                    <select required>
+                        <option value="">Selecciona motivo</option>
+                        <option value="bug">Reportar bug</option>
+                        <option value="suggestion">Sugerencia</option>
+                        <option value="other">Otro</option>
+                    </select>
+                    <textarea placeholder="Tu mensaje..." rows="4" required></textarea>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    ⚡ <strong>Rufino Dev</strong>
+                </div>
+                <p>Desarrollador Android independiente</p>
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#apps">Apps</a>
+                    <a href="#juegos">Juegos</a>
+                    <a href="#descargas">Descargas</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+                <p class="copyright">&copy; 2024 Rufino Dev. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón volver arriba -->
+    <button class="back-top" id="backTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
