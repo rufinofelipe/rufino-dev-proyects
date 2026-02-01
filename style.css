@@ -627,3 +627,19 @@ body {
         width: 100%;
     }
 }
+
+/* Estilo para botón "Ver" */
+.view-btn {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+}
+
+.view-btn:hover {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    transform: translateY(-2px);
+}
+
+/* Icono del ojo */
+.view-btn i {
+    margin-right: 8px;
+}
