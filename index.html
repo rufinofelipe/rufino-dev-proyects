@@ -3,361 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳 | APKs Android</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳 | Portafolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00b894;
+            --primary-dark: #00a085;
+            --secondary: #0984e3;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --light: #f1f5f9;
+            --gray: #64748b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* HEADER */
+        .header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 184, 148, 0.2);
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--light);
+        }
+        .logo-icon { color: var(--primary); }
+
+        /* HERO */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark), #1a1a2e);
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* OMNIBOT SECTION */
+        .section { padding: 80px 0; }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--light);
+        }
+        .section-title .highlight { color: var(--primary); }
+
+        .app-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background: var(--dark-light);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .app-showcase { grid-template-columns: 1fr; }
+        }
+
+        .app-visual {
+            text-align: center;
+        }
+        .app-logo {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 4rem;
+            color: white;
+            box-shadow: 0 15px 35px rgba(0, 184, 148, 0.3);
+        }
+        .app-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .stat {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .app-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        .app-description {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        .app-features {
+            margin: 30px 0;
+        }
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(0, 184, 148, 0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* BOTÓN DE DESCARGA PRINCIPAL */
+        .download-cta {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(9, 132, 227, 0.1));
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            border: 2px solid rgba(0, 184, 148, 0.2);
+        }
+        .download-btn-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px 45px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 15px;
+            margin: 20px 0;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .download-btn-main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 184, 148, 0.4);
+        }
+        .download-info {
+            color: var(--gray);
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+        .download-note {
+            color: #f59e0b;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark-light);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--primary); }
+        .copyright { color: var(--gray); font-size: 0.9rem; }
+    </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- HEADER -->
     <header class="header">
         <div class="container">
-            <div class="logo">
-                <span class="logo-icon">💻</span>
-                <span class="logo-text">ⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳</span>
-            </div>
-            <nav class="nav">
-                <a href="#inicio" class="nav-link">Inicio</a>
-                <a href="#apps" class="nav-link">Apps</a>
-                <a href="#juegos" class="nav-link">Juegos</a>
-                <a href="#descargas" class="nav-link">Descargas</a>
-                <a href="#contacto" class="nav-link">Contacto</a>
+            <a href="#" class="logo">
+                <span class="logo-icon">⚡</span>
+                <span>ⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳</span>
+            </a>
+            <nav>
+                <a href="#omnibot" style="color: var(--primary); text-decoration: none; font-weight: 600;">Omnibot</a>
             </nav>
-            <button class="menu-btn" id="menuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </header>
 
-    <!-- Presentación -->
-    <section id="inicio" class="hero">
+    <!-- HERO -->
+    <section class="hero">
         <div class="container">
-            <h1 class="hero-title">Desarrollador Android</h1>
-            <p class="hero-subtitle">Creo aplicaciones útiles y juegos divertidos</p>
-            <p class="hero-text">Todas disponibles en formato APK para descarga directa</p>
-            
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number" id="appsCount">0</span>
-                    <span class="stat-label">Aplicaciones</span>
+            <h1 class="hero-title">Arquitecto de Realidades Digitales</h1>
+            <p class="hero-subtitle">Desarrollo experiencias únicas, desde asistentes de IA hasta mundos interactivos. Cada línea de código es un paso hacia la innovación.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN OMNIBOT -->
+    <section id="omnibot" class="section">
+        <div class="container">
+            <h2 class="section-title">Mi <span class="highlight">Proyecto</span></h2>
+
+            <div class="app-showcase">
+                <div class="app-visual">
+                    <div class="app-logo">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Omnibot</h3>
+                    <p style="color: var(--gray); margin: 10px 0 20px;">Tu asistente AI personal para Android</p>
+
+                    <div class="app-stats">
+                        <div class="stat">
+                            <span class="stat-value">v1.0</span>
+                            <span class="stat-label">Versión</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">265 KB</span>
+                            <span class="stat-label">Tamaño</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">Android</span>
+                            <span class="stat-label">Plataforma</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">Offline</span>
+                            <span class="stat-label">Funciona sin internet</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat">
-                    <span class="stat-number" id="gamesCount">0</span>
-                    <span class="stat-label">Juegos</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" id="downloadsCount">0</span>
-                    <span class="stat-label">Descargas</span>
+
+                <div class="app-info">
+                    <h3>¿Qué es Omnibot?</h3>
+                    <p class="app-description">
+                        Omnibot es un asistente de inteligencia artificial integrado directamente en tu dispositivo Android. Diseñado para funcionar completamente offline, te ayuda a automatizar tareas, responder preguntas y gestionar tu día a día con un nivel de privacidad total.
+                    </p>
+
+                    <div class="app-features">
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                            <div>
+                                <strong>IA Local</strong>
+                                <p style="color: var(--gray); font-size: 0.95rem; margin-top: 5px;">Procesamiento 100% en tu dispositivo, sin enviar datos a la nube.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fas fa-tasks"></i></div>
+                            <div>
+                                <strong>Automatización</strong>
+                                <p style="color: var(--gray); font-size: 0.95rem; margin-top: 5px;">Crea flujos de trabajo automatizados para tareas repetitivas.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <strong>Privacidad Total</strong>
+                                <p style="color: var(--gray); font-size: 0.95rem; margin-top: 5px;">Tus datos nunca salen de tu dispositivo. Cero seguimiento.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="hero-buttons">
-                <a href="#descargas" class="btn btn-primary">
-                    <i class="fas fa-download"></i> Ver APKs
+
+            <!-- ZONA DE DESCARGA DIRECTA -->
+            <div class="download-cta">
+                <h3 style="color: var(--light); font-size: 1.8rem; margin-bottom: 10px;">Descargar Omnibot</h3>
+                <p style="color: var(--gray);">APK Android - Versión 1.0.0</p>
+
+                <!-- BOTÓN CON TU ENLACE DE LIMEWIRE -->
+                <a href="https://limewire.com/d/vcArr#zECUQFOx9n" 
+                   class="download-btn-main"
+                   download="Omnibot-v1.0.apk">
+                    <i class="fas fa-download"></i> Descargar Ahora (265 KB)
                 </a>
-                <a href="#contacto" class="btn btn-secondary">
-                    <i class="fas fa-envelope"></i> Contactar
-                </a>
+
+                <div class="download-info">
+                    <p><i class="fas fa-mobile-alt"></i> Compatible con Android 8.0 y superior</p>
+                    <p><i class="fas fa-clock"></i> Enlace válido por 6 días (LimeWire)</p>
+                </div>
+
+                <p class="download-note">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Recuerda activar "Orígenes desconocidos" en Ajustes → Seguridad antes de instalar.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Apps -->
-    <section id="apps" class="section">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-mobile-alt"></i> Mis Aplicaciones
-            </h2>
-            <p class="section-subtitle">APKs disponibles para Android</p>
-            
-            <div class="apps-grid">
-                <!-- App 1 -->
-                <div class="card">
-    <div class="card-content">
-        <div class="card-header">
-            <div class="card-icon app">
-                <i class="fas fa-robot"></i>
-            </div>
-            <h3 class="card-title">Omnibot</h3>
-            <span class="card-badge">Disponible</span>
-        </div>
-        
-        <p class="card-desc">Asistente de IA para automatizar tareas en Android.</p>
-        
-        <div class="card-info">
-            <span><i class="fas fa-download"></i> 3.5 MB</span>
-            <span><i class="fas fa-calendar"></i> v1.0.0</span>
-            <span><i class="fab fa-android"></i> Android 8+</span>
-        </div>
-        
-                <a href="apps/omnibot.html" class="card-btn view-btn">
-            <i class="fas fa-eye"></i> Ver
-        </a>
-    </div>
-        
-        <p class="card-desc">Asistente de IA para automatizar tareas en Android.</p>
-        
-        <div class="card-info">
-            <span><i class="fas fa-download"></i> 3.5 MB</span>
-            <span><i class="fas fa-calendar"></i> v1.0.0</span>
-        </div>
-
-                
-                <!-- App 2 -->
-                <div class="card">
-                    <div class="card-icon app">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3 class="card-title">Health Tracker</h3>
-                    <p class="card-desc">Seguimiento de hábitos y salud.</p>
-                    <div class="card-info">
-                        <span><i class="fas fa-download"></i> 2.4 MB</span>
-                        <span><i class="fas fa-calendar"></i> Beta 0.8</span>
-                    </div>
-                    <a href="downloads/apps/health-tracker.apk" class="card-btn" download>
-                        <i class="fas fa-download"></i> Descargar APK
-                    </a>
-                </div>
-                
-                <!-- App 3 -->
-                <div class="card">
-                    <div class="card-icon app">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3 class="card-title">Finance Calc</h3>
-                    <p class="card-desc">Calculadora financiera avanzada.</p>
-                    <div class="card-info">
-                        <span><i class="fas fa-download"></i> 1.8 MB</span>
-                        <span><i class="fas fa-calendar"></i> En desarrollo</span>
-                    </div>
-                    <button class="card-btn disabled">
-                        <i class="fas fa-clock"></i> Próximamente
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Juegos -->
-    <section id="juegos" class="section bg-dark">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-gamepad"></i> Mis Juegos
-            </h2>
-            <p class="section-subtitle">Juegos Android para descargar</p>
-            
-            <div class="games-grid">
-                <!-- Juego 1 -->
-                <div class="card">
-                    <div class="card-icon game">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="card-title">Galaxy Defender</h3>
-                    <p class="card-desc">Shoot'em up espacial 2D.</p>
-                    <div class="card-info">
-                        <span><i class="fas fa-download"></i> 15 MB</span>
-                        <span><i class="fas fa-star"></i> 4.5/5</span>
-                    </div>
-                    <a href="downloads/games/galaxy-defender.apk" class="card-btn" download>
-                        <i class="fas fa-download"></i> Descargar APK
-                    </a>
-                </div>
-                
-                <!-- Juego 2 -->
-                <div class="card">
-                    <div class="card-icon game">
-                        <i class="fas fa-running"></i>
-                    </div>
-                    <h3 class="card-title">Pixel Runner</h3>
-                    <p class="card-desc">Endless runner pixel art.</p>
-                    <div class="card-info">
-                        <span><i class="fas fa-download"></i> 8 MB</span>
-                        <span><i class="fas fa-star"></i> 4.2/5</span>
-                    </div>
-                    <a href="downloads/games/pixel-runner.apk" class="card-btn" download>
-                        <i class="fas fa-download"></i> Descargar APK
-                    </a>
-                </div>
-                
-                <!-- Juego 3 -->
-                <div class="card">
-                    <div class="card-icon game">
-                        <i class="fas fa-puzzle-piece"></i>
-                    </div>
-                    <h3 class="card-title">Cyber Puzzle</h3>
-                    <p class="card-desc">Rompecabezas cyberpunk.</p>
-                    <div class="card-info">
-                        <span><i class="fas fa-download"></i> En desarrollo</span>
-                        <span><i class="fas fa-code"></i> Godot</span>
-                    </div>
-                    <button class="card-btn disabled">
-                        <i class="fas fa-wrench"></i> En desarrollo
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Descargas -->
-    <section id="descargas" class="section">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-download"></i> Todas las Descargas
-            </h2>
-            
-            <div class="download-instructions">
-                <h3><i class="fas fa-info-circle"></i> Cómo instalar APKs:</h3>
-                <ol>
-                    <li>Descarga el archivo .apk</li>
-                    <li>Ve a <strong>Ajustes → Seguridad</strong></li>
-                    <li>Activa <strong>"Orígenes desconocidos"</strong></li>
-                    <li>Abre el archivo .apk descargado</li>
-                    <li>Sigue los pasos de instalación</li>
-                </ol>
-            </div>
-            
-            <div class="downloads-list">
-                <!-- Apps para descargar -->
-                <div class="download-category">
-                    <h3><i class="fas fa-mobile-alt"></i> Aplicaciones</h3>
-                    <div class="download-items">
-                        <div class="download-item">
-                            <div class="item-icon">
-                                <i class="fas fa-tasks"></i>
-                            </div>
-                            <div class="item-info">
-                                <h4>Omnibot</h4>
-                                <p>v1.0.0 | 1.2 MB | APK Android</p>
-                            </div>
-                            <a href="https://limewire.com/d/gNyz3#2sMnI2O4Av" class="download-btn" download>
-                                <i class="fas fa-download"></i> Descargar
-                            </a>
-                        </div>
-                        
-                        <div class="download-item">
-                            <div class="item-icon">
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
-                            <div class="item-info">
-                                <h4>Health Tracker</h4>
-                                <p>Beta 0.8 | 2.4 MB | APK Android</p>
-                            </div>
-                            <a href="downloads/apps/health-tracker.apk" class="download-btn" download>
-                                <i class="fas fa-download"></i> Descargar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Juegos para descargar -->
-                <div class="download-category">
-                    <h3><i class="fas fa-gamepad"></i> Juegos</h3>
-                    <div class="download-items">
-                        <div class="download-item">
-                            <div class="item-icon">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <div class="item-info">
-                                <h4>Galaxy Defender</h4>
-                                <p>v1.2 | 15 MB | APK Android</p>
-                            </div>
-                            <a href="downloads/games/galaxy-defender.apk" class="download-btn" download>
-                                <i class="fas fa-download"></i> Descargar
-                            </a>
-                        </div>
-                        
-                        <div class="download-item">
-                            <div class="item-icon">
-                                <i class="fas fa-running"></i>
-                            </div>
-                            <div class="item-info">
-                                <h4>Pixel Runner</h4>
-                                <p>v1.0 | 8 MB | APK Android</p>
-                            </div>
-                            <a href="downloads/games/pixel-runner.apk" class="download-btn" download>
-                                <i class="fas fa-download"></i> Descargar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="section bg-dark">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-envelope"></i> Contacto
-            </h2>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Reportar problemas o sugerencias</h3>
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <h4>WhatsApp</h4>
-                            <p>Respuesta rápida</p>
-                            <a href="//wa.me/240555285007" class="contact-link">Enviar mensaje</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>Para consultas formales</p>
-                            <a href="rufinofelipe810@gmail.com" class="contact-link">//wa.me/240222646582</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form" id="contactForm">
-                    <h3>Envíame un mensaje</h3>
-                    <input type="text" placeholder="Tú nombre" required>
-                    <input type="email" placeholder="Tu Email" required>
-                    <select required>
-                        <option value="">Selecciona motivo</option>
-                        <option value="bug">Reportar bug</option>
-                        <option value="suggestion">Sugerencia</option>
-                        <option value="other">Otro</option>
-                    </select>
-                    <textarea placeholder="Tu mensaje..." rows="4" required></textarea>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Enviar
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    ⚡ <strong>ⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳</strong>
-                </div>
-                <p>Desarrollador Android independiente</p>
-                <div class="footer-links">
-                    <a href="#inicio">Inicio</a>
-                    <a href="#apps">Apps</a>
-                    <a href="#juegos">Juegos</a>
-                    <a href="#descargas">Descargas</a>
-                    <a href="#contacto">Contacto</a>
-                </div>
-                <p class="copyright">&copy; 2026 aⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳. Todos los derechos reservados.</p>
+            <div class="logo" style="justify-content: center; margin-bottom: 20px;">
+                <span class="logo-icon">⚡</span>
+                <span>ⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳</span>
             </div>
+            <p style="color: var(--gray); max-width: 600px; margin: 0 auto 20px;">
+                Creando el futuro, una línea de código a la vez.
+            </p>
+            <div class="footer-links">
+                <a href="#omnibot">Omnibot</a>
+                <a href="https://wa.me/TUNUMERO" target="_blank">WhatsApp</a>
+                <a href="mailto:tu@email.com">Contacto</a>
+            </div>
+            <p class="copyright">© 2024 ⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Botón volver arriba -->
-    <button class="back-top" id="backTop">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script>
+        // Pequeño script para el botón de descarga
+        document.querySelector('.download-btn-main').addEventListener('click', function() {
+            alert('¡Gracias por descargar Omnibot! Asegúrate de activar "Orígenes desconocidos" en Ajustes → Seguridad antes de instalar el APK.');
+        });
+    </script>
 </body>
 </html>
