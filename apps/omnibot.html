@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omnibot - Asistente AI para Android</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos específicos para Omnibot */
+        :root {
+            --omnibot-primary: #00b894;
+            --omnibot-secondary: #00cec9;
+            --omnibot-dark: #0f172a;
+        }
+        
+        .detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--omnibot-primary);
+            text-decoration: none;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background: rgba(0, 184, 148, 0.1);
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            background: rgba(0, 184, 148, 0.2);
+        }
+        
+        .omnibot-header {
+            background: linear-gradient(135deg, var(--omnibot-dark), #1a1a2e);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(0, 184, 148, 0.3);
+            text-align: center;
+        }
+        
+        .omnibot-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--omnibot-primary), var(--omnibot-secondary));
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 3.5rem;
+            color: white;
+            box-shadow: 0 15px 35px rgba(0, 184, 148, 0.3);
+        }
+        
+        .omnibot-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            object-fit: cover;
+        }
+        
+        .omnibot-title {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--omnibot-primary), var(--omnibot-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .omnibot-tagline {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .app-info {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .app-info h2 {
+            color: var(--omnibot-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .app-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid var(--omnibot-primary);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 184, 148, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--omnibot-primary);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h4 {
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .download-sidebar {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid rgba(0, 184, 148, 0.2);
+            position: sticky;
+            top: 100px;
+        }
+        
+        .download-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .download-header h3 {
+            color: var(--omnibot-primary);
+            margin-bottom: 10px;
+        }
+        
+        .app-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--omnibot-primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        
+        .download-btn-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, var(--omnibot-primary), var(--omnibot-secondary));
+            color: white;
+            padding: 18px 35px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 15px;
+            width: 100%;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 184, 148, 0.4);
+        }
+        
+        .download-info {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .file-size {
+            font-size: 1.2rem;
+            color: var(--omnibot-primary);
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .file-expiry {
+            color: #f59e0b;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .install-guide {
+            background: rgba(0, 184, 148, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid var(--omnibot-primary);
+        }
+        
+        .install-guide h4 {
+            color: var(--omnibot-primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .install-steps {
+            color: #cbd5e1;
+        }
+        
+        .install-steps li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        
+        .install-steps strong {
+            color: white;
+        }
+        
+        .qr-section {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 0 auto 15px;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .qr-text {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .note {
+            color: #f59e0b;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="detail-container">
+        <!-- Botón volver -->
+        <a href="../index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Volver al Portafolio
+        </a>
+        
+        <!-- Header Omnibot -->
+        <header class="omnibot-header">
+            <div class="omnibot-logo">
+                <i class="fas fa-robot"></i>
+                <!-- Si tienes logo: <img src="../assets/images/logos/omnibot-logo.png" alt="Omnibot Logo"> -->
+            </div>
+            <h1 class="omnibot-title">Omnibot</h1>
+            <p class="omnibot-tagline">Tu asistente de inteligencia artificial personal para Android</p>
+            
+            <div class="app-stats">
+                <div class="stat">
+                    <span class="stat-value">v1.0.0</span>
+                    <span class="stat-label">Versión</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">3.5 MB</span>
+                    <span class="stat-label">Tamaño APK</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">Android 8+</span>
+                    <span class="stat-label">Requiere</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">Offline</span>
+                    <span class="stat-label">Funciona sin internet</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="app-grid">
+            <!-- Información de la app -->
+            <div class="app-info">
+                <h2><i class="fas fa-info-circle"></i> ¿Qué es Omnibot?</h2>
+                <p class="app-description">
+                    Omnibot es un asistente de inteligencia artificial integrado directamente en tu dispositivo Android. 
+                    Diseñado para funcionar completamente offline, te ayuda a automatizar tareas, responder preguntas, 
+                    gestionar tu agenda y mucho más, todo con un nivel de privacidad total.
+                </p>
+                
+                <h2><i class="fas fa-star"></i> Características Principales</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>IA Local</h4>
+                        <p>Procesamiento 100% en tu dispositivo, sin enviar datos a la nube.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h4>Automatización</h4>
+                        <p>Crea flujos de trabajo automatizados para tareas repetitivas.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comment-alt"></i>
+                        </div>
+                        <h4>Chat Inteligente</h4>
+                        <p>Conversación natural en español, con contexto y memoria.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h4>Asistente Personal</h4>
+                        <p>Gestión de agenda, recordatorios y organización diaria.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Integración Total</h4>
+                        <p>Controla otras apps y funciones de tu teléfono por voz o texto.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Privacidad Total</h4>
+                        <p>Tus datos nunca salen de tu dispositivo. Cero seguimiento.</p>
+                    </div>
+                </div>
+                
+                <h2><i class="fas fa-code"></i> Tecnología</h2>
+                <p class="app-description">
+                    Desarrollado con TensorFlow Lite y algoritmos de procesamiento de lenguaje natural optimizados 
+                    para dispositivos móviles. Utiliza menos de 50MB de RAM y es compatible con la mayoría de 
+                    dispositivos Android modernos.
+                </p>
+            </div>
+            
+            <!-- Panel de descarga -->
+            <div class="download-sidebar">
+                <div class="download-header">
+                    <h3><i class="fas fa-download"></i> Descargar Omnibot</h3>
+                    <p>APK Android - v1.0.0</p>
+                </div>
+                
+                <div class="download-btn-container">
+                    <!-- REEMPLAZA CON TU ENLACE REAL DE FILE.IO -->
+                    <a href="https://file.io/abc123def456" 
+                       class="download-btn"
+                       download="Omnibot-v1.0.0.apk">
+                        <i class="fas fa-download"></i> Descargar APK (3.5 MB)
+                    </a>
+                </div>
+                
+                <div class="download-info">
+                    <p class="file-size">📦 Tamaño: 3.5 Megabytes</p>
+                    <p>📱 Compatible: Android 8.0 y superior</p>
+                    <p>⚡ Requisitos: 100MB espacio libre, 2GB RAM recomendado</p>
+                    
+                    <p class="file-expiry">
+                        <i class="fas fa-clock"></i>
+                        Enlace válido por 14 días (File.io)
+                    </p>
+                </div>
+                
+                <div class="install-guide">
+                    <h4><i class="fas fa-wrench"></i> Cómo Instalar</h4>
+                    <ol class="install-steps">
+                        <li>Descarga el archivo .apk</li>
+                        <li>Ve a <strong>Ajustes → Seguridad</strong></li>
+                        <li>Activa <strong>"Orígenes desconocidos"</strong></li>
+                        <li>Abre el archivo .apk descargado</li>
+                        <li>Sigue los pasos de instalación</li>
+                        <li>¡Listo! Busca "Omnibot" en tus apps</li>
+                    </ol>
+                </div>
+                
+                <div class="qr-section">
+                    <div class="qr-code">
+                        <!-- QR code opcional -->
+                        <div style="background: white; padding: 10px; border-radius: 5px; text-align: center;">
+                            <div style="font-size: 0.8rem; color: #333;">[QR Code Placeholder]</div>
+                            <div style="font-size: 0.6rem; color: #666;">Escanea para descargar</div>
+                        </div>
+                    </div>
+                    <p class="qr-text">Escanea con tu teléfono para descargar directamente</p>
+                </div>
+            </div>
+        </div>
+        
+        <p class="note">
+            <i class="fas fa-exclamation-circle"></i>
+            Si el enlace no funciona, el archivo puede haber expirado. Contáctame para un nuevo enlace.
+        </p>
+    </div>
+    
+    <script>
+        // Script para seguimiento de descargas
+        document.querySelector('.download-btn').addEventListener('click', function() {
+            alert('¡Gracias por descargar Omnibot! Recuerda activar "Orígenes desconocidos" en Ajustes → Seguridad antes de instalar.');
+            
+            // Opcional: Contador de descargas
+            let downloads = localStorage.getItem('omnibot_downloads') || 0;
+            downloads++;
+            localStorage.setItem('omnibot_downloads', downloads);
+            console.log(`Omnibot descargado ${downloads} veces`);
+        });
+    </script>
+</body>
+</html>
