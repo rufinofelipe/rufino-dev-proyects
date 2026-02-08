@@ -6,237 +6,7 @@
     <title>ⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳 | Portafolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00b894;
-            --primary-dark: #00a085;
-            --secondary: #0984e3;
-            --dark: #0f172a;
-            --dark-light: #1e293b;
-            --light: #f1f5f9;
-            --gray: #64748b;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark);
-            color: var(--light);
-            line-height: 1.6;
-        }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* HEADER */
-        .header {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(0, 184, 148, 0.2);
-        }
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--light);
-        }
-        .logo-icon { color: var(--primary); }
-
-        /* HERO */
-        .hero {
-            padding: 140px 0 80px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--dark), #1a1a2e);
-        }
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        /* OMNIBOT SECTION */
-        .section { padding: 80px 0; }
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--light);
-        }
-        .section-title .highlight { color: var(--primary); }
-
-        .app-showcase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            background: var(--dark-light);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        @media (max-width: 768px) {
-            .app-showcase { grid-template-columns: 1fr; }
-        }
-
-        .app-visual {
-            text-align: center;
-        }
-        .app-logo {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            font-size: 4rem;
-            color: white;
-            box-shadow: 0 15px 35px rgba(0, 184, 148, 0.3);
-        }
-        .app-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .stat {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .stat-value {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-top: 5px;
-        }
-
-        .app-info h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--light);
-        }
-        .app-description {
-            font-size: 1.1rem;
-            color: #cbd5e1;
-            margin-bottom: 25px;
-            line-height: 1.8;
-        }
-        .app-features {
-            margin: 30px 0;
-        }
-        .feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .feature-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(0, 184, 148, 0.1);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            flex-shrink: 0;
-            margin-top: 3px;
-        }
-
-        /* BOTÓN DE DESCARGA PRINCIPAL */
-        .download-cta {
-            text-align: center;
-            background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(9, 132, 227, 0.1));
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 40px;
-            border: 2px solid rgba(0, 184, 148, 0.2);
-        }
-        .download-btn-main {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 20px 45px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 15px;
-            margin: 20px 0;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        .download-btn-main:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 184, 148, 0.4);
-        }
-        .download-info {
-            color: var(--gray);
-            margin-top: 20px;
-            font-size: 0.95rem;
-        }
-        .download-note {
-            color: #f59e0b;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: var(--dark-light);
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 60px;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover { color: var(--primary); }
-        .copyright { color: var(--gray); font-size: 0.9rem; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -246,8 +16,9 @@
                 <span class="logo-icon">⚡</span>
                 <span>ⁱ'ᵐ|𝕽𝖚𝖋𝖎𝖓𝖔𒆜†𝔇𝔢𝔳</span>
             </a>
-            <nav>
-                <a href="#omnibot" style="color: var(--primary); text-decoration: none; font-weight: 600;">Omnibot</a>
+            <nav class="nav-links">
+                <a href="#proyectos">Proyectos</a>
+                <a href="#contacto">Contacto</a>
             </nav>
         </div>
     </header>
@@ -260,138 +31,162 @@
         </div>
     </section>
 
-    <!-- SECCIÓN OMNIBOT -->
-    <section id="omnibot" class="section">
+    <!-- SECCIÓN DE PROYECTOS -->
+    <section id="proyectos" class="section projects-section">
         <div class="container">
-            <h2 class="section-title">Mi <span class="highlight">Proyecto</span></h2>
+            <h2 class="section-title">Mis <span class="highlight">Proyectos</span></h2>
 
-            <div class="app-showcase">
-                <div class="app-visual">
-                    <div class="app-logo">
+            <!-- PROYECTO OMNIBOT -->
+            <div class="project-card omnibot-card">
+                <div class="project-header">
+                    <div class="project-icon omnibot-icon">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <h3>Omnibot</h3>
-                    <p style="color: var(--gray); margin: 10px 0 20px;">Tu asistente AI personal para Android</p>
+                    <div class="project-title-section">
+                        <h3 class="project-title">🤖 Omnibot</h3>
+                        <p class="project-subtitle">Tu asistente AI personal para Android</p>
+                    </div>
+                </div>
 
-                    <div class="app-stats">
-                        <div class="stat">
+                <div class="project-content">
+                    <p class="project-description">
+                        Omnibot es un asistente de inteligencia artificial integrado directamente en tu dispositivo Android. Diseñado para generar imágenes, te ayuda a automatizar tareas, responder preguntas y gestionar tu día a día con un nivel de privacidad total.
+                    </p>
+
+                    <div class="project-stats">
+                        <div class="stat-card">
                             <span class="stat-value">v1.0</span>
                             <span class="stat-label">Versión</span>
                         </div>
-                        <div class="stat">
+                        <div class="stat-card">
                             <span class="stat-value">265 KB</span>
                             <span class="stat-label">Tamaño</span>
                         </div>
-                        <div class="stat">
-                            <span class="stat-value">Android</span>
-                            <span class="stat-label">Plataforma</span>
+                        <div class="stat-card">
+                            <span class="stat-value">Android 8+</span>
+                            <span class="stat-label">Compatible</span>
                         </div>
-                        <div class="stat">
-                            <span class="stat-value">Online</span>
-                            <span class="stat-label">Funciona con internet</span>
+                    </div>
+
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                            <div class="feature-text">
+                                <strong>IA Local</strong>
+                                <p>Procesamiento 100% en tu dispositivo</p>
+                            </div>
                         </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-tasks"></i></div>
+                            <div class="feature-text">
+                                <strong>Automatización</strong>
+                                <p>Flujos de trabajo automatizados</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="feature-text">
+                                <strong>Privacidad Total</strong>
+                                <p>Tus datos nunca salen del dispositivo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="https://limewire.com/d/vcArr#zECUQFOx9n" class="btn btn-primary" download>
+                            <i class="fas fa-download"></i> Descargar APK
+                        </a>
+                    </div>
+
+                    <div class="project-note">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Activa "Orígenes desconocidos" antes de instalar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYECTO WAGURI BOT -->
+            <div class="project-card waguri-card">
+                <span class="featured-badge">⭐ Destacado</span>
+                
+                <div class="project-header">
+                    <div class="project-icon waguri-icon">
+                        🌸
+                    </div>
+                    <div class="project-title-section">
+                        <h3 class="project-title">Waguri Bot</h3>
+                        <p class="project-subtitle">Bot multifuncional para WhatsApp</p>
                     </div>
                 </div>
 
-                <div class="app-info">
-                    <h3>¿Qué es Omnibot?</h3>
-                    <p class="app-description">
-                        Omnibot es un asistente de inteligencia artificial integrado directamente en tu dispositivo Android. Diseñado para Generar imágenes te ayuda a automatizar tareas, responder preguntas y gestionar tu día a día con un nivel de privacidad total.
+                <div class="project-content">
+                    <p class="project-description">
+                        Bot multifuncional para WhatsApp con sistema de economía completo, RPG, comandos de IA (ChatGPT, Gemini, Copilot), descargas multimedia y más de 100 comandos personalizables. Desarrollado con Baileys y Node.js.
                     </p>
 
-                    <div class="app-features">
-                        <div class="feature">
-                            <div class="feature-icon"><i class="fas fa-brain"></i></div>
-                            <div>
-                                <strong>IA Local</strong>
-                                <p style="color: var(--gray); font-size: 0.95rem; margin-top: 5px;">Procesamiento 100% en tu dispositivo, sin enviar datos a la nube.</p>
-                            </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Baileys</span>
+                        <span class="tech-tag">WhatsApp</span>
+                        <span class="tech-tag">APIs</span>
+                    </div>
+
+                    <div class="project-stats">
+                        <div class="stat-card">
+                            <span class="stat-value" data-target="45">0</span>
+                            <span class="stat-label">⭐ Stars</span>
                         </div>
-                        <div class="feature">
-                            <div class="feature-icon"><i class="fas fa-tasks"></i></div>
-                            <div>
-                                <strong>Automatización</strong>
-                                <p style="color: var(--gray); font-size: 0.95rem; margin-top: 5px;">Crea flujos de trabajo automatizados para tareas repetitivas.</p>
-                            </div>
+                        <div class="stat-card">
+                            <span class="stat-value" data-target="230">0</span>
+                            <span class="stat-label">🔄 Commits</span>
                         </div>
-                        <div class="feature">
-                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div>
-                                <strong>Privacidad Total</strong>
-                                <p style="color: var(--gray); font-size: 0.95rem; margin-top: 5px;">Tus datos nunca salen de tu dispositivo. Cero seguimiento.</p>
-                            </div>
+                        <div class="stat-card">
+                            <span class="stat-value" data-target="100">0</span>
+                            <span class="stat-label">📝 Comandos</span>
                         </div>
+                    </div>
+
+                    <div class="project-features">
+                        <div class="feature-item clickable">
+                            <span>✨ Sistema de economía: /trabajar /minar /rob /balance /pay</span>
+                        </div>
+                        <div class="feature-item clickable">
+                            <span>⚔️ Sistema RPG con misiones, inventario y duelos</span>
+                        </div>
+                        <div class="feature-item clickable">
+                            <span>🤖 Integración con IA: ChatGPT, Gemini, Copilot</span>
+                        </div>
+                        <div class="feature-item clickable">
+                            <span>📥 Descargas: YouTube, Instagram, TikTok, Pinterest</span>
+                        </div>
+                        <div class="feature-item clickable">
+                            <span>🎨 +50 comandos de anime y diversión</span>
+                        </div>
+                        <div class="feature-item clickable">
+                            <span>🔧 Sistema de administración de grupos</span>
+                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="https://github.com/rufinofelipe/Waguri-bot" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://rufinofelipe.github.io/Waguri-bot-web/" target="_blank" class="btn btn-secondary">
+                            <i class="fas fa-globe"></i> Sitio Web
+                        </a>
+                        <a href="https://wa.me/TUNUMERO" target="_blank" class="btn btn-secondary">
+                            <i class="fab fa-whatsapp"></i> Demo
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- ZONA DE DESCARGA DIRECTA -->
-            <div class="download-cta">
-                <h3 style="color: var(--light); font-size: 1.8rem; margin-bottom: 10px;">Descargar Omnibot</h3>
-                <p style="color: var(--gray);">APK Android - Versión 1.0.0</p>
-
-                <!-- BOTÓN CON TU ENLACE DE LIMEWIRE -->
-                <a href="https://limewire.com/d/vcArr#zECUQFOx9n" 
-                   class="download-btn-main"
-                   download="Omnibot-v1.0.apk">
-                    <i class="fas fa-download"></i> Descargar Ahora (265 KB)
-                </a>
-
-                <div class="download-info">
-                    <p><i class="fas fa-mobile-alt"></i> Compatible con Android 8.0 y superior</p>
-                    <p><i class="fas fa-clock"></i> Enlace válido por 6 días (LimeWire)</p>
-                </div>
-
-                <p class="download-note">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    Recuerda activar "Orígenes desconocidos" en Ajustes → Seguridad antes de instalar.
-                </p>
-            </div>
         </div>
     </section>
-<div class="project-card">
-    <img src="ruta/a/imagen-waguri.jpg" alt="Waguri Bot" class="project-image">
-    <div class="project-info">
-        <h3>🌸 Waguri Bot</h3>
-        <p class="project-description">
-            Bot multifuncional para WhatsApp con sistema de economía, RPG, comandos de IA, 
-            descargas multimedia y más de 100 comandos. Desarrollado con Baileys y Node.js.
-        </p>
-        <div class="project-tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">Baileys</span>
-            <span class="tag">WhatsApp Bot</span>
-            <span class="tag">API Integration</span>
-        </div>
-        <div class="project-links">
-            <a href="https://github.com/rufinofelipe/Waguri-bot" target="_blank" class="btn-primary">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://rufinofelipe.github.io/Waguri-bot-web/" target="_blank" class="btn-secondary">
-                <i class="fas fa-globe"></i> Sitio Web
-            </a>
-            <a href="https://wa.me/TUNUMERO" target="_blank" class="btn-secondary">
-                <i class="fab fa-whatsapp"></i> Demo
-            </a>
-        </div>
-        <div class="project-features">
-            <h4>Características principales:</h4>
-            <ul>
-                <li>✨ Sistema de economía completo (trabajar, minar, robar, transferencias)</li>
-                <li>⚔️ Sistema RPG con misiones, inventario y duelos</li>
-                <li>🤖 Integración con IA (ChatGPT, Gemini, Copilot)</li>
-                <li>📥 Descarga de contenido (YouTube, Instagram, TikTok, Pinterest)</li>
-                <li>🎨 Comandos de anime y diversión</li>
-                <li>🔧 Sistema de administración de grupos</li>
-                <li>💾 Base de datos persistente</li>
-            </ul>
-        </div>
-    </div>
-</div>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer id="contacto" class="footer">
         <div class="container">
             <div class="logo" style="justify-content: center; margin-bottom: 20px;">
                 <span class="logo-icon">⚡</span>
@@ -401,7 +196,7 @@
                 Creando el futuro, una línea de código a la vez.
             </p>
             <div class="footer-links">
-                <a href="#omnibot">Omnibot</a>
+                <a href="#proyectos">Proyectos</a>
                 <a href="https://wa.me/TUNUMERO" target="_blank">WhatsApp</a>
                 <a href="mailto:tu@email.com">Contacto</a>
             </div>
@@ -409,11 +204,6 @@
         </div>
     </footer>
 
-    <script>
-        // Pequeño script para el botón de descarga
-        document.querySelector('.download-btn-main').addEventListener('click', function() {
-            alert('¡Gracias por descargar Omnibot! Asegúrate de activar "Orígenes desconocidos" en Ajustes → Seguridad antes de instalar el APK.');
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
