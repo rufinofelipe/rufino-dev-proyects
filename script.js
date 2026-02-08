@@ -236,3 +236,356 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ===================================
+//   WAGURI BOT - Portfolio JavaScript
+//   Solo funcionalidades esenciales
+// ===================================
+
+(function() {
+  'use strict';
+
+  // Esperar a que el DOM esté listo
+  document.addEventListener('DOMContentLoaded', initWaguriCard);
+
+  function initWaguriCard() {
+    const waguriCard = document.querySelector('.project-card.waguri-bot');
+    
+    if (!waguriCard) {
+      console.warn('Waguri Bot card no encontrada');
+      return;
+    }
+
+    console.log('%c🌸 Waguri Bot Loaded 🌸', 'color: #FF69B4; font-size: 16px; font-weight: bold;');
+
+    // Inicializar todas las funcionalidades
+    initCardAnimation(waguriCard);
+    initStatsCounter(waguriCard);
+    initParallaxEffect(waguriCard);
+    initTagsAnimation(waguriCard);
+    initCopyCommands(waguriCard);
+    initLinksTracking(waguriCard);
+    initImageLazyLoad(waguriCard);
+  }
+
+  // =============================
+  // ANIMACIÓN DE ENTRADA
+  // =============================
+  function initCardAnimation(card) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(40px)';
+          
+          setTimeout(() => {
+            card.style.transition = 'all 0.8s ease-out';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 100);
+          
+          observer.unobserve(card);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(card);
+  }
+
+  // =============================
+  // CONTADOR ANIMADO DE STATS
+  // =============================
+  function initStatsCounter(card) {
+    const statsContainer = card.querySelector('.waguri-stats');
+    if (!statsContainer) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const statValues = statsContainer.querySelectorAll('.waguri-stat-value');
+          
+          statValues.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const suffix = stat.getAttribute('data-suffix') || '';
+            animateValue(stat, 0, target, 2000, suffix);
+          });
+          
+          observer.unobserve(statsContainer);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsContainer);
+  }
+
+  function animateValue(element, start, end, duration, suffix = '') {
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+
+    element.style.opacity = '0.5';
+
+    const timer = setInterval(() => {
+      current += increment;
+      
+      if (current >= end) {
+        element.textContent = end + suffix;
+        element.style.opacity = '1';
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current) + suffix;
+      }
+    }, 16);
+  }
+
+  // =============================
+  // EFECTO PARALLAX EN IMAGEN
+  // =============================
+  function initParallaxEffect(card) {
+    const image = card.querySelector('.waguri-project-image');
+    if (!image) return;
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const percentX = (x - centerX) / centerX;
+      const percentY = (y - centerY) / centerY;
+      
+      image.style.transform = `scale(1.08) translate(${percentX * 10}px, ${percentY * 10}px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      image.style.transform = 'scale(1)';
+    });
+  }
+
+  // =============================
+  // ANIMACIÓN DE TAGS
+  // =============================
+  function initTagsAnimation(card) {
+    const tags = card.querySelectorAll('.waguri-tag');
+    
+    tags.forEach((tag, index) => {
+      tag.style.opacity = '0';
+      tag.style.transform = 'scale(0)';
+      
+      setTimeout(() => {
+        tag.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        tag.style.opacity = '1';
+        tag.style.transform = 'scale(1)';
+      }, 100 * index);
+    });
+  }
+
+  // =============================
+  // COPIAR COMANDOS AL CLICK
+  // =============================
+  function initCopyCommands(card) {
+    const features = card.querySelectorAll('.waguri-features li');
+    
+    features.forEach(li => {
+      const text = li.textContent;
+      const commands = text.match(/\/\w+/g);
+      
+      if (commands) {
+        li.style.cursor = 'pointer';
+        li.title = 'Click para copiar comandos';
+        
+        li.addEventListener('click', () => {
+          const commandsText = commands.join(' ');
+          
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(commandsText).then(() => {
+              showToast(`✓ Copiado: ${commandsText}`);
+              flashElement(li);
+            }).catch(err => {
+              console.error('Error al copiar:', err);
+              showToast('✗ Error al copiar');
+            });
+          } else {
+            // Fallback para navegadores antiguos
+            fallbackCopyTextToClipboard(commandsText);
+            showToast(`✓ Copiado: ${commandsText}`);
+            flashElement(li);
+          }
+        });
+      }
+    });
+  }
+
+  // Fallback para copiar en navegadores sin clipboard API
+  function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+      document.execCommand('copy');
+    } catch (err) {
+      console.error('Fallback copy failed:', err);
+    }
+    
+    document.body.removeChild(textArea);
+  }
+
+  // Efecto visual al copiar
+  function flashElement(element) {
+    element.style.background = 'rgba(255, 105, 180, 0.2)';
+    element.style.transform = 'translateX(8px)';
+    
+    setTimeout(() => {
+      element.style.background = '';
+      element.style.transform = '';
+    }, 300);
+  }
+
+  // =============================
+  // SISTEMA DE TOAST
+  // =============================
+  function showToast(message, duration = 3000) {
+    // Remover toast existente
+    const existingToast = document.querySelector('.waguri-toast');
+    if (existingToast) {
+      existingToast.remove();
+    }
+
+    const toast = document.createElement('div');
+    toast.className = 'waguri-toast';
+    toast.innerHTML = `
+      <span style="font-size: 1.2rem;">✓</span>
+      <span>${message}</span>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.style.animation = 'waguriSlideOut 0.4s ease-out';
+      setTimeout(() => toast.remove(), 400);
+    }, duration);
+  }
+
+  // =============================
+  // TRACKING DE CLICKS EN LINKS
+  // =============================
+  function initLinksTracking(card) {
+    const links = card.querySelectorAll('.waguri-project-links a');
+    
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Obtener tipo de link
+        const icon = link.querySelector('i');
+        let linkType = 'unknown';
+        
+        if (icon) {
+          if (icon.classList.contains('fa-github')) linkType = 'github';
+          else if (icon.classList.contains('fa-globe')) linkType = 'website';
+          else if (icon.classList.contains('fa-whatsapp')) linkType = 'whatsapp';
+        }
+        
+        console.log(`📊 Click en ${linkType} de Waguri Bot`);
+        
+        // Efecto visual
+        link.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          link.style.transform = '';
+        }, 150);
+      });
+    });
+  }
+
+  // =============================
+  // LAZY LOADING DE IMAGEN
+  // =============================
+  function initImageLazyLoad(card) {
+    const image = card.querySelector('.waguri-project-image[data-src]');
+    if (!image) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const realSrc = img.getAttribute('data-src');
+          
+          if (realSrc) {
+            img.src = realSrc;
+            img.removeAttribute('data-src');
+          }
+          
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    observer.observe(image);
+  }
+
+})();
+
+// =============================
+// FUNCIONES GLOBALES (OPCIONAL)
+// =============================
+
+// Función para actualizar stats desde GitHub API
+window.updateWaguriStatsFromGitHub = async function() {
+  try {
+    const response = await fetch('https://api.github.com/repos/rufinofelipe/Waguri-bot');
+    
+    if (!response.ok) {
+      throw new Error('Error al obtener datos de GitHub');
+    }
+    
+    const data = await response.json();
+    
+    const card = document.querySelector('.project-card.waguri-bot');
+    if (!card) return;
+    
+    const starsElement = card.querySelector('[data-stat="stars"]');
+    if (starsElement) {
+      starsElement.setAttribute('data-target', data.stargazers_count);
+      starsElement.textContent = data.stargazers_count;
+    }
+    
+    console.log(`✅ Stats actualizadas: ${data.stargazers_count} stars, ${data.forks_count} forks`);
+    
+  } catch (error) {
+    console.warn('⚠️ No se pudieron cargar las stats de GitHub:', error);
+  }
+};
+
+// Función para actualizar stats manualmente
+window.updateWaguriStats = function(stars, commits, commands) {
+  const card = document.querySelector('.project-card.waguri-bot');
+  if (!card) return;
+  
+  const statsContainer = card.querySelector('.waguri-stats');
+  if (!statsContainer) return;
+  
+  statsContainer.innerHTML = `
+    <div class="waguri-stat-item">
+      <span class="waguri-stat-value" data-target="${stars}" data-stat="stars">${stars}</span>
+      <span class="waguri-stat-label">⭐ Stars</span>
+    </div>
+    <div class="waguri-stat-item">
+      <span class="waguri-stat-value" data-target="${commits}">${commits}</span>
+      <span class="waguri-stat-label">🔄 Commits</span>
+    </div>
+    <div class="waguri-stat-item">
+      <span class="waguri-stat-value" data-target="${commands}" data-suffix="+">${commands}+</span>
+      <span class="waguri-stat-label">📝 Comandos</span>
+    </div>
+  `;
+  
+  console.log('✅ Stats actualizadas manualmente');
+};
+
+// Uso:
+// updateWaguriStats(45, 230, 100);
+// updateWaguriStatsFromGitHub(); // Para obtener stats reales de GitHub
